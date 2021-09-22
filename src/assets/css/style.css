@@ -12,3 +12,105 @@ body {
   font-family: "Quicksand", sans-serif;
   height: 1500px;
 }
+
+/* Modals access start*/
+.modal-access {
+  height: 450px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.modal-access .img-atlas {
+  position: absolute;
+  width: 50px;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 10px;
+}
+.modal-content {
+  width: 400px;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.modal-access .img-leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90px;
+  border-top-right-radius: 10px;
+}
+
+.modal-access .modal-title {
+  text-align: center;
+}
+.modal-access .modal-title h3 {
+  font-weight: 600;
+  padding-top: 40px;
+}
+
+.modal-access .form-input-modal {
+  margin-top: 40px;
+}
+.modal-access .form-input-modal label {
+  font-weight: 600;
+}
+.modal-access .form-input-modal input {
+  width: 100%;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #d2d2d240;
+  border: 2px solid #2d2d2d73;
+  height: 39px;
+}
+.modal-access .form-input-modal button.btn-access {
+  background-color: var(--primary);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  width: 100%;
+  height: 39px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+.modal-access .form-input-modal button.btn-access:hover {
+  background-color: #4593f1;
+}
+.modal-access .form-question {
+  color: #8f8f8f;
+  text-align: center;
+  margin-top: 20px;
+}
+.modal-access .form-question button {
+  color: #8f8f8f;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+}
+
+.modal-access.register {
+  height: 550px;
+}
+.modal-access .form-input-modal.register {
+  margin-top: 5px;
+}
+.modal-access .form-question.register {
+  margin-top: 0;
+}
+.modal-access .form-input-modal.register .input-textarea {
+  width: 100%;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #d2d2d240;
+  border: 2px solid #2d2d2d73;
+  resize: none;
+  height: 50px;
+}
+.modal-access .img-leaf.register {
+  width: 70px;
+}
+/* Modals access end*/
