@@ -3,34 +3,35 @@ const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// Register
 exports.register = async (req, res) => {
-  const { fullname, email, password, phone, address } = req.body;
-  const schema = Joi.object({
-    fullname: Joi.string().min(6).required(),
-    email: Joi.string().email().min(6).required(),
-    password: Joi.string().min(8).required(),
-  });
-  const { error } = schema.validate({ fullname, email, password });
-  const emailExists = await user.findOne({
-    where: {
-      email: req.body.email,
-    },
-  });
-  if (emailExists) {
-    res.status(500).send({
-      status: "failed",
-      message: "email already exists",
+  try {
+    const { fullname, email, password, phone, address } = req.body;
+    const schema = Joi.object({
+      fullname: Joi.string().min(6).required(),
+      email: Joi.string().email().min(6).required(),
+      password: Joi.string().min(8).required(),
     });
-    return false;
-  }
-  if (error)
-    return res.status(400).send({
-      error: {
-        message: error.details[0].message,
+    const { error } = schema.validate({ fullname, email, password });
+    const emailExists = await user.findOne({
+      where: {
+        email: req.body.email,
       },
     });
+    if (emailExists) {
+      res.status(500).send({
+        status: "failed",
+        message: "email already exists",
+      });
+      return false;
+    }
+    if (error)
+      return res.status(400).send({
+        error: {
+          message: error.details[0].message,
+        },
+      });
 
-  try {
     const saltRounds = await bcrypt.genSalt(10);
     const hashingPassword = await bcrypt.hash(password, saltRounds);
     const newUser = await user.create({
@@ -63,19 +64,21 @@ exports.register = async (req, res) => {
   }
 };
 
+// Login
 exports.login = async (req, res) => {
-  const schema = Joi.object({
-    email: Joi.string().email().min(6).required(),
-    password: Joi.string().min(8).required(),
-  });
-  const { error } = schema.validate(req.body);
-  if (error)
-    return res.status(400).send({
-      error: {
-        message: error.details[0].message,
-      },
-    });
   try {
+    const schema = Joi.object({
+      email: Joi.string().email().min(6).required(),
+      password: Joi.string().min(8).required(),
+    });
+    const { error } = schema.validate(req.body);
+    if (error)
+      return res.status(400).send({
+        error: {
+          message: error.details[0].message,
+        },
+      });
+
     const userExist = await user.findOne({
       where: {
         email: req.body.email,
@@ -141,7 +144,7 @@ exports.checkAuth = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status({
+    res.status(500).send({
       status: "failed",
       message: "Server Error",
     });
