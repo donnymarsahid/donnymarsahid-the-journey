@@ -14,3 +14,9 @@ export const API = () => {
     delete: executeAPI,
   };
 };
+
+// Get data journeys
+export const getJourneys = async () => {
+  const response = await API().get("/journeys");
+  return response.data;
+};

@@ -122,9 +122,15 @@ nav .button-navbar .btn-register.active:hover {
   background-color: white;
   margin-top: 50px;
   width: 100%;
+  height: 380px;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   position: relative;
+  transform: scale(0.98);
+  transition: 0.2s;
+}
+.content.container-custom .card-diary .row .col-md-3 .box:hover {
+  transform: scale(1);
 }
 .content.container-custom .card-diary .row .col-md-3 .box h3 {
   font-size: 18px;
