@@ -1,0 +1,156 @@
+:root {
+  --font: #3d3d3d;
+  --seccondary: #ededed;
+  --primary: #2e86de;
+}
+
+/* Navbar Start */
+nav {
+  height: 80px;
+}
+
+nav.active {
+  background-color: var(--primary);
+}
+
+nav .button-navbar .btn-login {
+  background-color: transparent;
+  border: 1.9px solid white;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 28px;
+  transition: 0.1s;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+nav .button-navbar .btn-login:hover {
+  background-color: var(--primary);
+  border: 1.9px solid var(--primary);
+}
+nav .button-navbar .btn-register {
+  background-color: var(--primary);
+  border: 1.9px solid var(--primary);
+  color: white;
+  border-radius: 6px;
+  padding: 4px 28px;
+  transition: 0.1s;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+nav .button-navbar .btn-register:hover {
+  background-color: #3899fa;
+  border: 1.9px solid #3899fa;
+}
+nav .button-navbar .btn-register.active {
+  background-color: var(--seccondary);
+  border: 1.9px solid white;
+  color: #0062c4;
+  border-radius: 6px;
+  padding: 4px 28px;
+  transition: 0.1s;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+nav .button-navbar .btn-register.active:hover {
+  background-color: white;
+  border: 1.9px solid #b9dcff;
+}
+/* Navbar End */
+
+/* Jumbotron Start */
+.guest .jumbotron {
+  background-color: wheat;
+  height: 470px;
+  background-image: url("../../../assets/img/Jumbotron.png");
+  background-size: cover;
+}
+
+.guest .jumbotron h1 {
+  color: white;
+  font-weight: 700;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.guest .jumbotron p.lead {
+  color: white;
+  font-weight: 300;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+/* Jumbotron End */
+
+/* Content Start */
+.content {
+  margin-top: 100px;
+}
+.content.container-custom {
+  width: 95%;
+  margin: auto;
+}
+.content.container-custom h3.title-content {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 35px;
+}
+.content.container-custom .searching {
+  background-color: wheat;
+  width: 95%;
+  margin: auto;
+}
+.content.container-custom .searching input.input-search {
+  width: 90%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+}
+.content.container-custom .searching button.btn-search {
+  width: 10%;
+  background-color: var(--primary);
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.content.container-custom .searching button.btn-search:hover {
+  background-color: #3899fa;
+}
+
+.content.container-custom .card-diary .row .col-md-3 .box {
+  background-color: white;
+  margin-top: 50px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.content.container-custom .card-diary .row .col-md-3 .box h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.content.container-custom .card-diary .row .col-md-3 .box p.date {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3d3d3d73;
+}
+.content.container-custom .card-diary .row .col-md-3 .box p.description {
+  font-size: 14px;
+  font-weight: 500;
+}
+.content.container-custom .card-diary .row .col-md-3 .box .content-box {
+  padding: 10px;
+}
+.content.container-custom .card-diary .row .col-md-3 .box .icon-bookmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  width: 45px;
+  height: 45px;
+  padding: 4px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+/* Content End */
