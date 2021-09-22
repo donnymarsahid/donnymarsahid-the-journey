@@ -24,6 +24,7 @@ exports.getJourneys = async (req, res) => {
       data: journeys,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       status: "failed",
       message: "server error",
@@ -31,7 +32,7 @@ exports.getJourneys = async (req, res) => {
   }
 };
 
-// add data journey
+// Add data journey
 exports.addJourney = async (req, res) => {
   try {
     const journeyExists = await journey.findOne({
@@ -90,6 +91,7 @@ exports.getDetailJourney = async (req, res) => {
       data: findJourney,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       status: "failed",
       message: "server error",

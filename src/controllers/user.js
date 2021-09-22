@@ -17,6 +17,7 @@ exports.getUser = async (req, res) => {
       data: userProfile,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       status: "failed",
       message: "server error",
@@ -42,6 +43,58 @@ exports.getJourneysUser = async (req, res) => {
       data: findJourneys,
     });
   } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      status: "failed",
+      message: "server error",
+    });
+  }
+};
+
+// Update user profile
+exports.updateUserProfile = async (req, res) => {
+  try {
+    const idUser = req.user.id;
+    const path = process.env.IMG_URL;
+    const imageUpload = path + req.file.filename;
+
+    await user.update(
+      { image: imageUpload },
+      {
+        where: {
+          id: idUser,
+        },
+      }
+    );
+
+    res.status(200).send({
+      status: "success",
+      data: imageUpload,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      status: "failed",
+      message: "server error",
+    });
+  }
+};
+
+// Get data all user
+exports.getDataUsers = async (req, res) => {
+  try {
+    const dataUsers = await user.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    });
+
+    res.status(200).send({
+      status: "success",
+      data: dataUsers,
+    });
+  } catch (error) {
+    console.log(error);
     res.status(500).send({
       status: "failed",
       message: "server error",
