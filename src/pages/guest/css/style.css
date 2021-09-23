@@ -23,6 +23,10 @@ nav .button-navbar .btn-login {
   font-weight: 500;
   letter-spacing: 1px;
 }
+nav .button-navbar .btn-login.active:hover {
+  background-color: #ededed;
+  color: #0062c4;
+}
 nav .button-navbar .btn-login:hover {
   background-color: var(--primary);
   border: 1.9px solid var(--primary);
@@ -59,7 +63,6 @@ nav .button-navbar .btn-register.active:hover {
 
 /* Jumbotron Start */
 .guest .jumbotron {
-  background-color: wheat;
   height: 470px;
   background-image: url("../../../assets/img/Jumbotron.png");
   background-size: cover;
@@ -160,3 +163,37 @@ nav .button-navbar .btn-register.active:hover {
   cursor: pointer;
 }
 /* Content End */
+
+/* Detail Post Start */
+.detail-post {
+  margin-top: 100px;
+}
+.detail-post .container-post {
+  width: 90%;
+  margin: auto;
+}
+
+.detail-post .title-post .title-date h3 {
+  font-weight: 600;
+}
+.detail-post .title-post .title-date p {
+  font-weight: 600;
+  color: #3d3d3d80;
+}
+.detail-post .image-post {
+  margin-top: 50px;
+}
+.detail-post .image-post .img-post {
+  width: 100%;
+  height: 570px;
+}
+.detail-post .icon-bookmark-post {
+  background-color: white;
+  width: 70px;
+  border-radius: 50px;
+}
+.detail-post .icon-bookmark-post img {
+  width: 24px;
+  cursor: pointer;
+}
+/* Detail Post End */

@@ -1,0 +1,89 @@
+:root {
+  --font: #3d3d3d;
+  --seccondary: #ededed;
+  --primary: #2e86de;
+}
+
+/* Navbar Start */
+nav.user-page {
+  background-color: #f1f1f1;
+}
+nav.user-page .dropdown img.img-dropdown {
+  cursor: pointer;
+}
+nav.user-page .dropdown .dropdown-menu {
+  background-color: white;
+  position: absolute !important;
+  top: 55px !important;
+  left: -150px !important;
+  width: 200px;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+nav.user-page .dropdown .dropdown-menu::before {
+  content: url("../../../assets/img/polygon.png");
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: -35px;
+}
+nav.user-page .dropdown .dropdown-menu li {
+  color: var(--font);
+  font-weight: 600;
+}
+nav.user-page .dropdown .dropdown-menu li:hover {
+  background-color: rgba(0, 0, 0, 0.062);
+}
+nav.user-page .dropdown .dropdown-menu li.logout-icon {
+  border-top: 2px solid #a8a8a8;
+}
+
+/* Navbar End */
+
+/* Profile Start */
+.page-profile {
+  margin-top: 120px;
+}
+.page-profile .container-profile {
+  width: 90%;
+  margin: auto;
+}
+.page-profile .container-profile h3 {
+  font-size: 34px;
+  font-weight: 600;
+}
+.page-profile .container-profile h3.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+/* Profile End */
+
+/* New Journey Start */
+.page-newjourney {
+  margin-top: 100px;
+}
+.page-newjourney .title-newjourney {
+  width: 90%;
+  margin: auto;
+}
+.page-newjourney .title-newjourney h3 {
+  font-weight: 600;
+}
+.page-newjourney .form-input-newjourney {
+  margin-top: 50px;
+}
+.page-newjourney .form-input-newjourney label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--font);
+}
+.page-newjourney .form-input-newjourney input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1.9px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+/* New Journey End */

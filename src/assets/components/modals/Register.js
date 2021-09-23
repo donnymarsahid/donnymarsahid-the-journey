@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import leaf from "../../img/leaf.png";
 import atlas from "../../img/atlas.png";
 
-const Register = ({ showRegister, handleCloseRegister }) => {
+const Register = ({ handleShow, showRegister, handleCloseRegister }) => {
   return (
     <Modal show={showRegister} onHide={handleCloseRegister} centered>
       <Modal.Body className="modal-access register">
@@ -44,10 +44,10 @@ const Register = ({ showRegister, handleCloseRegister }) => {
           <button type="submit" className="btn-access register">
             Register
           </button>
-          <p className="form-question register">
-            You have account? <button>Login Here</button>
-          </p>
         </form>
+        <p className="form-question register">
+          You have account? <button onClick={handleShow}>Login Here !</button>
+        </p>
       </Modal.Body>
     </Modal>
   );

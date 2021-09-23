@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../../assets/img/logo.svg";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ handleShow, handleShowRegister }) => {
   const [navbar, setNavbar] = useState(false);
@@ -24,9 +25,14 @@ const Navbar = ({ handleShow, handleShowRegister }) => {
         }
       >
         <div className="container d-flex justify-content-between">
-          <img src={logo} alt="logo-the-journey" className="img-logo" />
+          <Link to="/">
+            <img src={logo} alt="logo-the-journey" className="img-logo" />
+          </Link>
           <div className="button-navbar">
-            <button className="btn-login  me-3" onClick={handleShow}>
+            <button
+              className={navbar ? `btn-login  me-3 active` : `btn-login  me-3`}
+              onClick={handleShow}
+            >
               Login
             </button>
             <button

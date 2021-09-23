@@ -20,3 +20,15 @@ export const getJourneys = async () => {
   const response = await API().get("/journeys");
   return response.data;
 };
+
+// Get detail user with token
+export const getDetailUser = async () => {
+  const config = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + localStorage.token,
+    },
+  };
+  const response = await API().get("/profile", config);
+  return response.data;
+};

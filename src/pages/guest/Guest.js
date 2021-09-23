@@ -6,6 +6,7 @@ import { getJourneys } from "../../config/api";
 import CardsJourneys from "./cards/CardsJourneys";
 import Login from "../../assets/components/modals/Login";
 import Register from "../../assets/components/modals/Register";
+import loading from "../../assets/img/loading.gif";
 
 const Guest = () => {
   const [show, setShow] = useState(false);
@@ -13,14 +14,28 @@ const Guest = () => {
   const handleClose = () => setShow(false);
   const handleCloseRegister = () => setShowRegister(false);
 
-  const handleShow = () => setShow(true);
-  const handleShowRegister = () => setShowRegister(true);
+  const handleShow = () => {
+    setShow(true);
+    setShowRegister(false);
+  };
+  const handleShowRegister = () => {
+    setShowRegister(true);
+    setShow(false);
+  };
 
   const { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
 
   const cardsJourneys = journeys?.map((data) => (
-    <CardsJourneys journey={data} key={data.id} />
+    <CardsJourneys handleShow={handleShow} journey={data} key={data.id} />
   ));
+
+  if (isLoading) {
+    return (
+      <div className="custom-status">
+        <img src={loading} alt="load" width="100px" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -57,8 +72,13 @@ const Guest = () => {
           </div>
         </div>
       </div>
-      <Login show={show} handleClose={handleClose} />
+      <Login
+        handleShowRegister={handleShowRegister}
+        show={show}
+        handleClose={handleClose}
+      />
       <Register
+        handleShow={handleShow}
         showRegister={showRegister}
         handleCloseRegister={handleCloseRegister}
       />
