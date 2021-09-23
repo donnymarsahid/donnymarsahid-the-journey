@@ -61,7 +61,7 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
 
 /* New Journey Start */
 .page-newjourney {
-  margin-top: 100px;
+  margin-top: 120px;
 }
 .page-newjourney .title-newjourney {
   width: 90%;
@@ -85,5 +85,47 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
   border: 1.9px solid rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   padding-left: 10px;
+}
+
+.rdw-editor-toolbar.toolbarClassName a {
+  text-decoration: none;
+  color: var(--font);
+  font-weight: 500;
+}
+
+.wrapperClassName.rdw-editor-wrapper {
+  background-color: white;
+  border: 1.9px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.editorClassName.rdw-editor-main {
+  padding: 0 10px;
+  height: 300px;
+}
+.page-newjourney .form-input-newjourney .btn-post {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 7px 30px;
+}
+.page-newjourney .form-input-newjourney .btn-post:hover {
+  background-color: #399cff;
+}
+.page-newjourney .label-image {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+.page-newjourney .label-image p {
+  font-size: 14px;
+}
+.page-newjourney .fileupload-image {
+  width: 170px;
+  height: 160px;
+  border-radius: 10px;
 }
 /* New Journey End */
