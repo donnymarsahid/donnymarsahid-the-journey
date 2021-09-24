@@ -32,3 +32,15 @@ export const getDetailUser = async () => {
   const response = await API().get("/profile", config);
   return response.data;
 };
+
+// Get data pot user authentification
+export const getJourneysUser = async () => {
+  const config = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + localStorage.token,
+    },
+  };
+  const response = await API().get("/profile/journeys", config);
+  return response.data;
+};

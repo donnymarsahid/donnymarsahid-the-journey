@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bmoutline from "../../../assets/img/bookmark-outline.svg";
 
-const CardsJourneys = ({ journey }) => {
+const CardsJourneysUser = ({ journey }) => {
   const sliceDescription = journey.description.slice(0, 190);
 
   function removeHTML(str) {
@@ -35,4 +35,4 @@ const CardsJourneys = ({ journey }) => {
   );
 };
 
-export default CardsJourneys;
+export default CardsJourneysUser;

@@ -6,11 +6,19 @@ import draftToHtml from "draftjs-to-html";
 import { useMutation, useQuery } from "react-query";
 import { API, getDetailUser } from "../../config/api";
 import uploadFileImage from "../../assets/img/upload.png";
+import AlertNewJourney from "../../assets/components/modals/AlertNewJourney";
 
 const NewJourney = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [namePath, setNamePath] = useState("Photo Journey");
+  const [namePath, setNamePath] = useState("no files uploaded !");
   const [fileUpload, setFileUpload] = useState(uploadFileImage);
+  const [loadPost, setLoadPost] = useState(false);
+  const [message, setMessage] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [form, setForm] = useState({
     title: "",
     image: "",
@@ -48,25 +56,40 @@ const NewJourney = () => {
   const handlerSubmit = useMutation(async (e) => {
     try {
       e.preventDefault();
-      // const formData = new FormData()
-      // formData.set('image', image)
-      // formData.set('title', title)
-      // formData.set('description', title)
-      // formData.set('writer', detailUser?.fullname)
-      console.log(description);
-      console.log(title);
-      console.log(image);
 
-      //   const config = {
-      //       method: 'POST',
-      //       headers: {
-      //           Authorization: 'Bearer '+ localStorage.token
-      //       }
-      //   }
+      if (image === "" || title === "" || !description) {
+        setMessage("please upload image title and description !");
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
+        return false;
+      }
 
-      //   const response = await API().post('/journey', config)
+      const formData = new FormData();
+      formData.set("image", image);
+      formData.set("title", title);
+      formData.set("description", description);
+      formData.set("writer", detailUser?.fullname);
 
-      //   logresponse.data
+      const config = {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.token,
+        },
+        body: formData,
+      };
+
+      const response = await API().post("/journey", config);
+
+      if (response) {
+        setLoadPost(true);
+        setTimeout(() => {
+          setLoadPost(false);
+        }, 3000);
+        setTimeout(() => {
+          handleShow();
+        }, 3200);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -84,7 +107,6 @@ const NewJourney = () => {
             id="image"
             name="image"
             onChange={handlerFile}
-            required
           />
           <br />
           <div className="d-flex align-items-center">
@@ -101,14 +123,7 @@ const NewJourney = () => {
           <br />
           <label for="#title">Title</label>
           <br />
-          <input
-            type="text"
-            id="title"
-            name="title"
-            onChange={handlerInput}
-            required
-          />
-
+          <input type="text" id="title" name="title" onChange={handlerInput} />
           <br />
           <label for="description" className="mt-4">
             Description
@@ -116,21 +131,40 @@ const NewJourney = () => {
           <br />
           <Editor
             editorState={editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
+            toolbarclassName="toolbarclassName"
+            wrapperclassName="wrapperclassName"
+            editorclassName="editorclassName"
             onEditorStateChange={onEditorStateChange}
           />
-          <button type="submit" className="btn-post">
-            <span
-              class="spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span>{" "}
-            Post...
-          </button>
+          <div className="d-flex justify-content-between mt-4">
+            <div></div>
+            <div className="d-flex align-items-center">
+              {loadPost ? (
+                <button type="submit" className="btn-post">
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>{" "}
+                  Post...
+                </button>
+              ) : (
+                <>
+                  {message && (
+                    <div className="alert alert-danger post me-3" role="alert">
+                      {message}
+                    </div>
+                  )}
+                  <button type="submit" className="btn-post">
+                    Post
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
         </form>
       </div>
+      <AlertNewJourney show={show} handleClose={handleClose} />
     </div>
   );
 };

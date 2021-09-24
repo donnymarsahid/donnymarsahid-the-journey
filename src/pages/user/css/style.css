@@ -10,6 +10,7 @@ nav.user-page {
 }
 nav.user-page .dropdown img.img-dropdown {
   cursor: pointer;
+  border-radius: 50px;
 }
 nav.user-page .dropdown .dropdown-menu {
   background-color: white;
@@ -57,6 +58,57 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
   font-weight: 600;
   margin-top: 20px;
 }
+.page-profile .post-mydiary {
+  margin-bottom: -25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+.page-profile .box-setting-profile {
+  background-color: white;
+  width: 350px;
+  height: 280px;
+  padding: 25px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.13);
+}
+.page-profile .box-setting-profile .asset-atlas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  border-top-left-radius: 8px;
+}
+.page-profile .box-setting-profile .asset-leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  border-top-right-radius: 8px;
+}
+
+.page-profile .box-setting-profile .btn-setting {
+  background-color: var(--primary);
+  border: none;
+  padding: 8px 25px;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+.page-profile .box-setting-profile .btn-setting:hover {
+  background-color: #399cff;
+}
+.page-profile .box-setting-profile p {
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #5e5e5e;
+}
+
+.page-profile .img-profile-page {
+  border-radius: 1000px;
+}
+
 /* Profile End */
 
 /* New Journey Start */
@@ -87,21 +139,19 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
   padding-left: 10px;
 }
 
-.rdw-editor-toolbar.toolbarClassName a {
+.rdw-editor-toolbar a {
   text-decoration: none;
   color: var(--font);
   font-weight: 500;
 }
 
-.wrapperClassName.rdw-editor-wrapper {
+.rdw-editor-main {
   background-color: white;
-  border: 1.9px solid rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
+  margin-top: -6px;
+  padding: 0 20px;
+  height: 300px !important;
 }
-.editorClassName.rdw-editor-main {
-  padding: 0 10px;
-  height: 300px;
-}
+
 .page-newjourney .form-input-newjourney .btn-post {
   background-color: var(--primary);
   color: white;
@@ -112,6 +162,10 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
 }
 .page-newjourney .form-input-newjourney .btn-post:hover {
   background-color: #399cff;
+}
+.page-newjourney .alert.alert-danger.post {
+  padding: 8px 10px;
+  margin: 0;
 }
 .page-newjourney .label-image {
   background-color: white;
@@ -128,4 +182,5 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
   height: 160px;
   border-radius: 10px;
 }
+
 /* New Journey End */

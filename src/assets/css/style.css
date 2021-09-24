@@ -113,6 +113,53 @@ body {
 .modal-access .img-leaf.register {
   width: 70px;
 }
+
+.photo-setting {
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: #d2d2d240;
+  border: 2px solid #2d2d2d73;
+  height: 39px;
+  margin-bottom: -15px;
+  color: #8f8f8f;
+  font-size: 14px;
+  cursor: pointer;
+}
+.photo-setting i {
+  font-size: 20px;
+}
+.text-close {
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+.button-check {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  letter-spacing: 1px;
+}
+.button-check:hover {
+  background-color: #4593f1;
+}
+.button-close {
+  background-color: #8f8f8f;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  letter-spacing: 1px;
+}
+.button-close:hover {
+  background-color: #9b9b9b;
+}
 /* Modals access end*/
 
 /* Custom Status */

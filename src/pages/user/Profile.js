@@ -1,25 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { getDetailUser } from "../../config/api";
+import { getDetailUser, getJourneysUser } from "../../config/api";
+import CardsJourneysUser from "./cards/CardsJourneysUser";
 import "./css/style.css";
+import leaf from "../../assets/img/leaf.png";
+import atlas from "../../assets/img/atlas.png";
+import SettingProfile from "../../assets/components/modals/SettingProfile";
 
 const Profile = () => {
-  const { data: detailUser } = useQuery("detailUserCache", getDetailUser);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const { data: detailUser, refetch } = useQuery(
+    "detailUserCache",
+    getDetailUser
+  );
+  const { data: journeysUser } = useQuery("journeysCache", getJourneysUser);
+
+  const cardsJourneysUser = journeysUser?.map((data) => {
+    return <CardsJourneysUser journey={data} key={data.id} />;
+  });
+
   return (
-    <div className="page-profile">
-      <div className="container-profile">
-        <div className="box-profile d-flex flex-column align-items-center">
-          <h3 className="mb-3">Profile</h3>
-          <img src={detailUser?.image} alt="profile" width="200px" />
-          <h3 className="mb-3 profile-name text-capitalize">
-            {detailUser?.fullname}
-          </h3>
-          <div className="detail-user-page">
+    <>
+      <div className="page-profile guest">
+        <div className="container-profile d-flex flex-column align-items-center">
+          <div className="box-profile d-flex flex-column align-items-center">
+            <h3 className="mb-3">Profile</h3>
+            <img
+              src={detailUser?.image}
+              alt="profile"
+              width="200px"
+              className="img-profile-page"
+            />
+            <h3 className="mb-3 profile-name text-capitalize">
+              {detailUser?.fullname}
+            </h3>
+          </div>
+          <div className="box-setting-profile text-center d-flex flex-column justify-content-center">
+            <img src={leaf} alt="asset" className="asset-leaf" />
+            <img src={atlas} alt="asset" className="asset-atlas" />
             <p>{detailUser?.email}</p>
+            <p>{detailUser?.phone}</p>
+            <p>{detailUser?.address}</p>
+            <button className="btn-setting" onClick={handleShow}>
+              SETTING PROFILE
+            </button>
+          </div>
+        </div>
+        <div className=" user-page guest">
+          <div className="content">
+            <div className="content container-custom">
+              <div className="card-diary">
+                <h3 className="post-mydiary">Post My Diary</h3>
+                <div className="row">{cardsJourneysUser}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <SettingProfile show={show} handleClose={handleClose} refetch={refetch} />
+    </>
   );
 };
 

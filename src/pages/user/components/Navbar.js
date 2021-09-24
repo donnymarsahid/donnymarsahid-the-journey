@@ -12,7 +12,6 @@ import bmOutline from "../../../assets/img/bookmark-outline.svg";
 const Navbar = () => {
   const { data: detailUser } = useQuery("detailUserCache", getDetailUser);
 
-  console.log(detailUser);
   return (
     <>
       <nav className="navbar user-page fixed-top d-flex align-items-center shadow-sm active">
@@ -31,19 +30,19 @@ const Navbar = () => {
               />
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <Link className="text-decoration-none" to="/profile">
-                  <li className="d-flex align-items-center ps-3 pt-3 user-icon">
+                  <li className="d-flex align-items-center ps-3 pt-2 pb-2 user-icon">
                     <img src={user} alt="icon" className="pe-2" />
                     Profile
                   </li>
                 </Link>
                 <Link to="/add-journey" className="text-decoration-none">
-                  <li className="d-flex align-items-center ps-3 pt-3 journey-icon">
+                  <li className="d-flex align-items-center ps-3 pt-2 pb-2 journey-icon">
                     <img src={write} alt="icon" className="pe-2" />
                     New Journey
                   </li>
                 </Link>
                 <Link className="text-decoration-none">
-                  <li className="d-flex align-items-center pb-3 ps-3 pt-3 bookmark-icon">
+                  <li className="d-flex align-items-center pb-2 ps-3 pt-2  bookmark-icon">
                     <img
                       src={bmOutline}
                       alt="icon"

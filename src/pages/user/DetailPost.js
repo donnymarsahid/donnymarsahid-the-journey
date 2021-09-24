@@ -44,7 +44,10 @@ const DetailPost = () => {
           <div className="image-post d-flex justify-content-center">
             <img src={detailPost?.image} alt="img-post" className="img-post" />
           </div>
-          <div className="description-post mt-5">{detailPost?.description}</div>
+          <div
+            className="description-post mt-5"
+            dangerouslySetInnerHTML={{ __html: detailPost?.description }}
+          />
         </div>
       </div>
     </>
