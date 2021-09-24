@@ -1,4 +1,4 @@
-const { bookmark, user } = require("../../models");
+const { bookmark, user, journey } = require("../../models");
 
 // Get all data bookmark from idUser
 exports.getBookmarksUser = async (req, res) => {
@@ -13,6 +13,13 @@ exports.getBookmarksUser = async (req, res) => {
           as: "user",
           attributes: {
             exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+        {
+          model: journey,
+          as: "journey",
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
           },
         },
       ],

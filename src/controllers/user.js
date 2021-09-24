@@ -30,6 +30,7 @@ exports.getJourneysUser = async (req, res) => {
   try {
     const idUser = req.user.id;
     const findJourneys = await journey.findAll({
+      order: [["createdAt", "DESC"]],
       where: {
         idUser,
       },
