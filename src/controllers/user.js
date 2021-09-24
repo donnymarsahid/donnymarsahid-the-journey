@@ -59,7 +59,7 @@ exports.updateUserProfile = async (req, res) => {
     const imageUpload = path + req.file.filename;
 
     await user.update(
-      { image: imageUpload },
+      { ...req.body, image: imageUpload },
       {
         where: {
           id: idUser,
