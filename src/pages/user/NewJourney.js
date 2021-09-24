@@ -7,6 +7,7 @@ import { useMutation, useQuery } from "react-query";
 import { API, getDetailUser } from "../../config/api";
 import uploadFileImage from "../../assets/img/upload.png";
 import AlertNewJourney from "../../assets/components/modals/AlertNewJourney";
+import uploadGif from "../../assets/img/file.gif";
 
 const NewJourney = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -46,10 +47,13 @@ const NewJourney = () => {
     setForm({ ...form, [e.target.name]: e.target.files[0] });
     const path = e.target.value;
     const format = path.replace(/^.*\\/, "");
-    setNamePath(format);
     if (e.target.type === "file") {
       let url = URL.createObjectURL(e.target.files[0]);
-      setFileUpload(url);
+      setFileUpload(uploadGif);
+      setTimeout(() => {
+        setNamePath(format);
+        setFileUpload(url);
+      }, 4000);
     }
   };
 

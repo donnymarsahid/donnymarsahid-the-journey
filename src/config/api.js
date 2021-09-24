@@ -44,3 +44,15 @@ export const getJourneysUser = async () => {
   const response = await API().get("/profile/journeys", config);
   return response.data;
 };
+
+// Get data bookmark user
+export const getBookmarksUser = async () => {
+  const config = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + localStorage.token,
+    },
+  };
+  const response = await API().get("/bookmarks", config);
+  return response.data;
+};

@@ -17,13 +17,22 @@ const Login = ({ handleShowRegister, show, handleClose }) => {
     password: "",
   });
 
+  const { email, password } = form;
+
   const handlerInput = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handlerSubmit = useMutation(async (e) => {
-    e.preventDefault();
     try {
+      e.preventDefault();
+      if (email === "" || password === "") {
+        setMessage("Input your email or password !");
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
+        return false;
+      }
       const body = JSON.stringify(form);
       const config = {
         method: "POST",
@@ -58,7 +67,11 @@ const Login = ({ handleShowRegister, show, handleClose }) => {
         <div className="modal-title">
           <h3>Login</h3>
         </div>
-        {message && <p>{message}</p>}
+        {message && (
+          <div class="alert alert-login alert-danger" role="alert">
+            {message}
+          </div>
+        )}
         <img src={atlas} alt="atlas" className="img-atlas" />
         <img src={leaf} alt="leaf" className="img-leaf" />
         <form

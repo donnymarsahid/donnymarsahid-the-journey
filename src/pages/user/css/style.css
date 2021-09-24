@@ -37,6 +37,7 @@ nav.user-page .dropdown .dropdown-menu li:hover {
 }
 nav.user-page .dropdown .dropdown-menu li.logout-icon {
   border-top: 2px solid #a8a8a8;
+  cursor: pointer;
 }
 
 /* Navbar End */
@@ -184,3 +185,32 @@ nav.user-page .dropdown .dropdown-menu li.logout-icon {
 }
 
 /* New Journey End */
+
+/* Bookmark Start */
+.bookmark-page {
+  margin-top: 120px;
+}
+.bookmark-page .content.container-custom h3.title-content {
+  margin-bottom: 0;
+}
+/* Bookmark End */
+
+#add-bookmark-shortcut {
+  position: fixed;
+  background-color: var(--primary);
+  border-radius: 50px;
+  width: 75px;
+  height: 75px;
+  bottom: 30px;
+  right: 30px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  line-height: 75px;
+  text-align: center;
+}
+#add-bookmark-shortcut:hover {
+  background-color: #47a3ff;
+}
+#add-bookmark-shortcut img {
+  width: 40px;
+}

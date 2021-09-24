@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import logodark from "../../../assets/img/logo-dark.svg";
 import "../css/style.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getDetailUser } from "../../../config/api";
 import write from "../../../assets/img/write.svg";
 import user from "../../../assets/img/user.svg";
 import logout from "../../../assets/img/logout.svg";
 import bmOutline from "../../../assets/img/bookmark-outline.svg";
+import swal from "sweetalert";
+import { UserContext } from "../../../context/UserContext";
 
 const Navbar = () => {
+  const history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
   const { data: detailUser } = useQuery("detailUserCache", getDetailUser);
+
+  const handlerLogout = () => {
+    swal({
+      title: "Are you sure logout?",
+      text: "You will be logged out of the user page",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((logout) => {
+      if (logout) {
+        dispatch({
+          type: "LOGOUT",
+        });
+        localStorage.removeItem("token");
+        history.push("/");
+      }
+    });
+  };
 
   return (
     <>
@@ -41,7 +63,7 @@ const Navbar = () => {
                     New Journey
                   </li>
                 </Link>
-                <Link className="text-decoration-none">
+                <Link to="/bookmark" className="text-decoration-none">
                   <li className="d-flex align-items-center pb-2 ps-3 pt-2  bookmark-icon">
                     <img
                       src={bmOutline}
@@ -52,12 +74,13 @@ const Navbar = () => {
                     Bookmark
                   </li>
                 </Link>
-                <Link className="text-decoration-none">
-                  <li className="d-flex align-items-center pb-2 ps-3 pt-3 logout-icon">
-                    <img src={logout} alt="icon" className="ps-1 me-2" />
-                    Logout
-                  </li>
-                </Link>
+                <li
+                  className="d-flex align-items-center pb-2 ps-3 pt-3 logout-icon"
+                  onClick={handlerLogout}
+                >
+                  <img src={logout} alt="icon" className="ps-1 me-2" />
+                  Logout
+                </li>
               </ul>
             </div>
           </div>

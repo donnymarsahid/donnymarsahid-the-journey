@@ -11,6 +11,8 @@ import User from "./pages/user/User";
 import Navbar from "./pages/user/components/Navbar";
 import Profile from "./pages/user/Profile";
 import NewJourney from "./pages/user/NewJourney";
+import Bookmark from "./pages/user/Bookmark";
+import Footer from "./assets/components/Footer";
 
 function App() {
   const [state, dispatch] = useContext(UserContext);
@@ -57,7 +59,9 @@ function App() {
           <Route path="/post/:id" component={DetailPostUser} />
           <Route path="/profile" component={Profile} />
           <Route path="/add-journey" component={NewJourney} />
+          <Route path="/bookmark" component={Bookmark} />
         </Switch>
+        <Footer />
       </Router>
     );
   }
@@ -69,6 +73,7 @@ function App() {
         <Route path="/" exact component={Guest} />
         <Route path="/post/:id" component={DetailPost} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
