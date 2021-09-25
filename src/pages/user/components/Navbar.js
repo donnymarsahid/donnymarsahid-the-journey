@@ -29,6 +29,7 @@ const Navbar = () => {
           type: "LOGOUT",
         });
         localStorage.removeItem("token");
+        localStorage.removeItem("idUser");
         history.push("/");
       }
     });

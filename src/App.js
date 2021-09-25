@@ -13,6 +13,7 @@ import Profile from "./pages/user/Profile";
 import NewJourney from "./pages/user/NewJourney";
 import Bookmark from "./pages/user/Bookmark";
 import Footer from "./assets/components/Footer";
+import UpdateJourney from "./pages/user/UpdateJourney";
 
 function App() {
   const [state, dispatch] = useContext(UserContext);
@@ -60,6 +61,7 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/add-journey" component={NewJourney} />
           <Route path="/bookmark" component={Bookmark} />
+          <Route path="/update-journey/:id" component={UpdateJourney} />
         </Switch>
         <Footer />
       </Router>

@@ -6,8 +6,11 @@ import "./css/style.css";
 import leaf from "../../assets/img/leaf.png";
 import atlas from "../../assets/img/atlas.png";
 import SettingProfile from "../../assets/components/modals/SettingProfile";
+import noData from "../../assets/img/no-data.svg";
+import { useHistory } from "react-router";
 
 const Profile = () => {
+  const history = useHistory();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -53,8 +56,23 @@ const Profile = () => {
           <div className="content">
             <div className="content container-custom">
               <div className="card-diary">
-                <h3 className="post-mydiary">Post My Diary</h3>
-                <div className="row">{cardsJourneysUser}</div>
+                {journeysUser?.length === 0 ? (
+                  <div className="no-data-profile flex-column d-flex justify-content-center align-items-center">
+                    <img src={noData} alt="no-data" width="130px" />
+                    <p className="nodatatext pt-1 pb-1 ps-3"> No Data Post !</p>
+                    <button
+                      className="btn-go-post ms-4"
+                      onClick={() => history.push("/add-journey")}
+                    >
+                      go post diary
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <h3 className="post-mydiary">Post My Diary</h3>
+                    <div className="row">{cardsJourneysUser}</div>
+                  </>
+                )}
               </div>
             </div>
           </div>

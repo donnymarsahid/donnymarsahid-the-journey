@@ -9,8 +9,10 @@ import iconWriter from "../../assets/img/write-shortcut.png";
 import { useHistory } from "react-router";
 
 const User = () => {
-  const { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
   const history = useHistory();
+  const { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
+
+  console.log(journeys);
 
   const cardsJourneys = journeys?.map((data) => (
     <CardsJourneys journey={data} key={data.id} />
