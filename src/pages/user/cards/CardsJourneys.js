@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import bmoutline from "../../../assets/img/bookmark-outline.svg";
 import { API } from "../../../config/api";
 import swal from "sweetalert";
+import bmFill from "../../../assets/img/bookmark-fill.svg";
 
 const CardsJourneys = ({ journey }) => {
   const history = useHistory();
@@ -14,6 +15,8 @@ const CardsJourneys = ({ journey }) => {
     tmp.innerHTML = str;
     return tmp.textContent || tmp.innerText || "";
   }
+
+  const idUser = JSON.parse(localStorage.getItem("idUser"));
 
   const handlerAddBookmark = useMutation(async (id) => {
     try {
@@ -59,7 +62,15 @@ const CardsJourneys = ({ journey }) => {
           className="icon-bookmark d-flex justify-content-center"
           onClick={() => handlerAddBookmark.mutate(journey.id)}
         >
-          <img src={bmoutline} alt="icon-bookmark" width="18px" />
+          {journey.bookmarks.length === 0 ||
+          journey.bookmarks[0].idUser !== idUser ? (
+            <img src={bmoutline} alt="icon-bookmark" width="18px" />
+          ) : (
+            <>
+              {" "}
+              <img src={bmFill} alt="icon-bookmark" width="18px" />
+            </>
+          )}
         </div>
       </div>
     </div>
