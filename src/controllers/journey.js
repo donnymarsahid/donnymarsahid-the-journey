@@ -1,4 +1,4 @@
-const { journey, user } = require("../../models");
+const { journey, user, bookmark } = require("../../models");
 
 // Get all data journey
 exports.getJourneys = async (req, res) => {
@@ -11,6 +11,13 @@ exports.getJourneys = async (req, res) => {
           as: "user",
           attributes: {
             exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+        {
+          model: bookmark,
+          as: "bookmarks",
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
           },
         },
       ],
