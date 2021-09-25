@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bmFill from "../../../assets/img/bookmark-fill.svg";
 
-const CardsBookmarks = ({ bookmark }) => {
+const CardsBookmarks = ({ handlerDeleteBookmark, bookmark }) => {
   const sliceDescription = bookmark.journey.description.slice(0, 190);
 
   function removeHTML(str) {
@@ -32,7 +32,10 @@ const CardsBookmarks = ({ bookmark }) => {
             }}
           />
         </div>
-        <div className="icon-bookmark d-flex justify-content-center">
+        <div
+          className="icon-bookmark d-flex justify-content-center"
+          onClick={() => handlerDeleteBookmark.mutate(bookmark.journey.id)}
+        >
           <img src={bmFill} alt="icon-bookmark" width="18px" />
         </div>
       </div>

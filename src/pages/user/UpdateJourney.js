@@ -10,7 +10,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import { useMutation, useQuery } from "react-query";
 import { API, getDetailUser } from "../../config/api";
-import AlertNewJourney from "../../assets/components/modals/AlertNewJourney";
+import AlertUpdateJourney from "../../assets/components/modals/AlertUpdateJourney";
 import uploadGif from "../../assets/img/file.gif";
 import { useParams } from "react-router";
 
@@ -196,7 +196,7 @@ const UpdateJourney = () => {
           </div>
         </form>
       </div>
-      <AlertNewJourney show={show} handleClose={handleClose} />
+      <AlertUpdateJourney show={show} handleClose={handleClose} />
     </div>
   );
 };

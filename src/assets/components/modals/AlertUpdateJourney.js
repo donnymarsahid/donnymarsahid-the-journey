@@ -2,12 +2,12 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-const AlertNewJourney = ({ show, handleClose }) => {
+const AlertUpdateJourney = ({ show, handleClose }) => {
   const history = useHistory();
 
   return (
     <Modal show={show} onHide={handleClose} centered>
-      <Modal.Body>Congrats, your diary successfully added!</Modal.Body>
+      <Modal.Body>Congrats, your diary successfully updated!</Modal.Body>
       <Modal.Footer>
         <button className="button-close" onClick={handleClose}>
           Close
@@ -20,4 +20,4 @@ const AlertNewJourney = ({ show, handleClose }) => {
   );
 };
 
-export default AlertNewJourney;
+export default AlertUpdateJourney;

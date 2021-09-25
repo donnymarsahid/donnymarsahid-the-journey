@@ -1,22 +1,62 @@
 import React, { useState } from "react";
 import "./css/style.css";
 import "../guest/css/style.css";
-import { useQuery } from "react-query";
-import { getBookmarksUser } from "../../config/api";
+import { useMutation, useQuery } from "react-query";
+import { API, getBookmarksUser } from "../../config/api";
 import loading from "../../assets/img/loading.gif";
 import noData from "../../assets/img/no-data.svg";
 import CardsBookmarks from "./cards/CardsBookmarks";
 import { useHistory } from "react-router";
+import swal from "sweetalert";
 
 const Bookmark = () => {
   const history = useHistory();
-  const { data: bookmarks, isLoading } = useQuery(
-    "bookmarksCache",
-    getBookmarksUser
-  );
+  const {
+    data: bookmarks,
+    isLoading,
+    refetch,
+  } = useQuery("bookmarksCache", getBookmarksUser);
+
+  const handlerDeleteBookmark = useMutation(async (id) => {
+    try {
+      const config = {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + localStorage.token,
+        },
+      };
+
+      swal({
+        title: "Are you sure?",
+        text: "Bookmark will be deleted soon!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(async (willDelete) => {
+        if (willDelete) {
+          const response = await API().delete("/bookmark/" + id, config);
+
+          if (response.status === "success") {
+            refetch();
+          }
+          swal("Your bookmark has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your bookmark is safe!");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
   const cardsBookmarks = bookmarks?.map((data) => (
-    <CardsBookmarks bookmark={data} key={data.id} />
+    <CardsBookmarks
+      bookmark={data}
+      key={data.id}
+      handlerDeleteBookmark={handlerDeleteBookmark}
+    />
   ));
 
   if (isLoading) {
