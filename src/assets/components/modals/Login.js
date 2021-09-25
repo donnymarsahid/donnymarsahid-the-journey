@@ -48,7 +48,6 @@ const Login = ({ handleShowRegister, show, handleClose }) => {
           type: "LOGIN_SUCCESS",
           payload: response.data.user,
         });
-        localStorage.setItem("idUser", JSON.stringify(response.data.user.id));
         history.push("/");
         window.location.reload();
       } else {

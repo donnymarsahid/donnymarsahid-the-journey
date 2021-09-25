@@ -19,10 +19,15 @@ const Profile = () => {
     "detailUserCache",
     getDetailUser
   );
-  const { data: journeysUser } = useQuery("journeysCache", getJourneysUser);
+  const { data: journeysUser, refetch: refetchUser } = useQuery(
+    "journeysCache",
+    getJourneysUser
+  );
 
   const cardsJourneysUser = journeysUser?.map((data) => {
-    return <CardsJourneysUser journey={data} key={data.id} />;
+    return (
+      <CardsJourneysUser journey={data} key={data.id} refetch={refetchUser} />
+    );
   });
 
   return (

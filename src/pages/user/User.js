@@ -10,12 +10,14 @@ import { useHistory } from "react-router";
 
 const User = () => {
   const history = useHistory();
-  const { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
-
-  console.log(journeys);
+  const {
+    data: journeys,
+    isLoading,
+    refetch,
+  } = useQuery("journeysCache", getJourneys);
 
   const cardsJourneys = journeys?.map((data) => (
-    <CardsJourneys journey={data} key={data.id} />
+    <CardsJourneys journey={data} key={data.id} refetch={refetch} />
   ));
 
   if (isLoading) {
