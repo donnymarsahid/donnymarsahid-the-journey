@@ -1,4 +1,4 @@
-const { user, journey } = require("../../models");
+const { user, journey, bookmark } = require("../../models");
 
 // Get detail profile user
 exports.getUser = async (req, res) => {
@@ -34,6 +34,15 @@ exports.getJourneysUser = async (req, res) => {
       where: {
         idUser,
       },
+      include: [
+        {
+          model: bookmark,
+          as: "bookmarks",
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
+        },
+      ],
       attributes: {
         exclude: ["createdAt", "updatedAt", "idUser"],
       },

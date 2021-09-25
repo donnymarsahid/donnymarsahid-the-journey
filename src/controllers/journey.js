@@ -22,7 +22,7 @@ exports.getJourneys = async (req, res) => {
         },
       ],
       attributes: {
-        exclude: ["createdAt", "updatedAt", "idUser"],
+        exclude: ["updatedAt", "idUser"],
       },
     });
 
@@ -88,6 +88,13 @@ exports.getDetailJourney = async (req, res) => {
       where: {
         id: idJourney,
       },
+      include: [
+        {
+          model: bookmark,
+          as: "bookmarks",
+          exclude: ["createdAt, updatedAt"],
+        },
+      ],
       attributes: {
         exclude: ["createdAt, updatedAt"],
       },
