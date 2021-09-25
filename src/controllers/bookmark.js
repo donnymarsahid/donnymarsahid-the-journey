@@ -4,6 +4,7 @@ const { bookmark, user, journey } = require("../../models");
 exports.getBookmarksUser = async (req, res) => {
   try {
     const bookmarksUser = await bookmark.findAll({
+      order: [["createdAt", "DESC"]],
       where: {
         idUser: req.user.id,
       },
@@ -44,7 +45,7 @@ exports.getBookmarksUser = async (req, res) => {
 exports.addBookmark = async (req, res) => {
   try {
     const idUser = req.user.id;
-    const idJourney = req.body.idJourney;
+    const idJourney = req.params.id;
 
     await bookmark.create({ idUser, idJourney });
 

@@ -98,3 +98,55 @@ exports.getDetailJourney = async (req, res) => {
     });
   }
 };
+
+exports.deleteJourneyUser = async (req, res) => {
+  try {
+    const idUser = req.user.id;
+    const idJourney = req.params.id;
+
+    await journey.destroy({
+      where: {
+        idUser,
+        id: idJourney,
+      },
+    });
+
+    res.status(200).send({
+      status: "success",
+      data: idJourney,
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "failed",
+    });
+    console.log(error);
+  }
+};
+
+exports.updateJourneyUser = async (req, res) => {
+  try {
+    const idUser = req.user.id;
+    const idJourney = req.params.id;
+
+    await journey.update(
+      { ...req.body },
+      {
+        where: {
+          idUser,
+          id: idJourney,
+        },
+      }
+    );
+
+    res.status(200).send({
+      status: "success update",
+      idUser,
+      idJourney,
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "failed",
+    });
+    console.log(error);
+  }
+};

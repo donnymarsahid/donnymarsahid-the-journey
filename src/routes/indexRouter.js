@@ -19,6 +19,8 @@ const {
   getJourneys,
   addJourney,
   getDetailJourney,
+  deleteJourneyUser,
+  updateJourneyUser,
 } = require("../controllers/journey");
 
 // Authentification
@@ -30,6 +32,8 @@ router.get("/check-auth", authToken, checkAuth);
 router.get("/journeys", getJourneys);
 router.post("/journey", authToken, uploadFile("image"), addJourney);
 router.get("/journey/:id", getDetailJourney);
+router.delete("/journey/:id", authToken, deleteJourneyUser);
+router.put("/journey/:id", authToken, uploadFile("image"), updateJourneyUser);
 
 // User
 router.get("/users", getDataUsers);
@@ -41,7 +45,7 @@ router.put("/profile", authToken, uploadFile("image"), updateUserProfile);
 
 // Bookmark
 router.get("/bookmarks", authToken, getBookmarksUser);
-router.post("/bookmark", authToken, addBookmark);
+router.post("/bookmark/:id", authToken, addBookmark);
 router.delete("/bookmark/:id", authToken, deleteBookmark);
 
 module.exports = router;

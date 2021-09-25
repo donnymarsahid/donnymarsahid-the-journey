@@ -99,6 +99,7 @@ exports.login = async (req, res) => {
       status: "success",
       data: {
         user: {
+          id: userExist.id,
           fullname: userExist.fullname,
           email: userExist.email,
           token,
