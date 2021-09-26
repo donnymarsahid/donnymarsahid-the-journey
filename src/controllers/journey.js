@@ -1,4 +1,6 @@
 const { journey, user, bookmark } = require("../../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 // Get all data journey
 exports.getJourneys = async (req, res) => {
