@@ -8,7 +8,6 @@ import bmoutline from "../../../assets/img/bookmark-outline.svg";
 
 const CardsJourneysUser = ({ journey, refetch }) => {
   const history = useHistory();
-  const sliceDescription = journey.description.slice(0, 190);
   const { data: detailUser } = useQuery("detailUserCache", getDetailUser);
 
   const handlerDeleteBookmark = useMutation(async (id) => {
@@ -70,7 +69,7 @@ const CardsJourneysUser = ({ journey, refetch }) => {
 
   function removeHTML(str) {
     var tmp = document.createElement("DIV");
-    tmp.innerHTML = str;
+    tmp.innerHTML = str.slice(0, 380);
     return tmp.textContent || tmp.innerText || "";
   }
 
@@ -90,7 +89,7 @@ const CardsJourneysUser = ({ journey, refetch }) => {
           <p
             className="description m-0"
             dangerouslySetInnerHTML={{
-              __html: removeHTML(sliceDescription) + "...",
+              __html: removeHTML(journey.description) + "...",
             }}
           />
         </div>

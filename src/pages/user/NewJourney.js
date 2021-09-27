@@ -61,6 +61,8 @@ const NewJourney = () => {
     try {
       e.preventDefault();
 
+      console.log(description);
+
       if (image === "" || title === "" || !description) {
         setMessage("please upload image title and description !");
         setTimeout(() => {

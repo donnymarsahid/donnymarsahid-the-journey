@@ -14,6 +14,34 @@ const Guest = () => {
   const handleClose = () => setShow(false);
   const handleCloseRegister = () => setShowRegister(false);
 
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState("");
+  const [searchButton, setSearchButton] = useState(false);
+  let { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
+
+  journeys = journeys?.filter((val) => {
+    if (search === "") {
+      return val;
+    } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+      return val;
+    }
+  });
+
+  const handlerInputSearch = (e) => {
+    setSearch(e.target.value);
+    setSearchResult("search result : " + e.target.value);
+    if (search === "") {
+      setSearchResult("");
+    }
+    if (journeys?.length === 0) {
+      setSearchResult("journey not found!");
+    }
+    setSearchButton(true);
+    setTimeout(() => {
+      setSearchButton(false);
+    }, 1000);
+  };
+
   const handleShow = () => {
     setShow(true);
     setShowRegister(false);
@@ -22,8 +50,6 @@ const Guest = () => {
     setShowRegister(true);
     setShow(false);
   };
-
-  const { data: journeys, isLoading } = useQuery("journeysCache", getJourneys);
 
   const cardsJourneys = journeys?.map((data) => (
     <CardsJourneys handleShow={handleShow} journey={data} key={data.id} />
@@ -63,9 +89,24 @@ const Guest = () => {
                 type="text"
                 placeholder="Find Journey"
                 className="input-search"
+                onChange={handlerInputSearch}
               />
-              <button className="btn-search">Search</button>
+              {searchButton ? (
+                <button type="submit" className="btn-search">
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>{" "}
+                  Search
+                </button>
+              ) : (
+                <button type="submit" className="btn-search">
+                  Search
+                </button>
+              )}
             </div>
+            <p className="text-search-result">{searchResult}</p>
             <div className="card-diary">
               <div className="row">{cardsJourneys}</div>
             </div>

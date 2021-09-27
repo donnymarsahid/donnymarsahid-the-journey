@@ -9,12 +9,10 @@ import moment from "moment";
 
 const CardsJourneys = ({ journey, refetch }) => {
   const history = useHistory();
-  const sliceDescription = journey.description.slice(0, 190);
   const { data: detailUser } = useQuery("detailUserCache", getDetailUser);
-
   function removeHTML(str) {
     var tmp = document.createElement("DIV");
-    tmp.innerHTML = str;
+    tmp.innerHTML = str.slice(0, 380);
     return tmp.textContent || tmp.innerText || "";
   }
 
@@ -93,7 +91,7 @@ const CardsJourneys = ({ journey, refetch }) => {
           <p
             className="description m-0"
             dangerouslySetInnerHTML={{
-              __html: removeHTML(sliceDescription) + "...",
+              __html: removeHTML(journey.description) + "...",
             }}
           />
         </div>

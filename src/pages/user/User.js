@@ -33,7 +33,7 @@ const User = () => {
     if (search === "") {
       setSearchResult("");
     }
-    if (journeys.length === 0) {
+    if (journeys?.length === 0) {
       setSearchResult("journey not found!");
     }
     setSearchButton(true);

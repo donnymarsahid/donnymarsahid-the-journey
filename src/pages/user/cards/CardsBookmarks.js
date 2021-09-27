@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import bmFill from "../../../assets/img/bookmark-fill.svg";
 
 const CardsBookmarks = ({ handlerDeleteBookmark, bookmark }) => {
-  const sliceDescription = bookmark.journey.description.slice(0, 190);
-
   function removeHTML(str) {
     var tmp = document.createElement("DIV");
-    tmp.innerHTML = str;
+    tmp.innerHTML = str.slice(0, 380);
     return tmp.textContent || tmp.innerText || "";
   }
-
   return (
     <div className="col-md-3">
       <div className="box">
@@ -28,7 +25,7 @@ const CardsBookmarks = ({ handlerDeleteBookmark, bookmark }) => {
           <p
             className="description m-0"
             dangerouslySetInnerHTML={{
-              __html: removeHTML(sliceDescription) + "...",
+              __html: removeHTML(bookmark.journey.description) + "...",
             }}
           />
         </div>

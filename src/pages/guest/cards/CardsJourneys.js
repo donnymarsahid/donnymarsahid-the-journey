@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import bmoutline from "../../../assets/img/bookmark-outline.svg";
 
 const CardsJourneys = ({ handleShow, journey }) => {
-  const sliceDescription = journey.description.slice(0, 190);
-
   function removeHTML(str) {
     var tmp = document.createElement("DIV");
-    tmp.innerHTML = str;
+    tmp.innerHTML = str.slice(0, 380);
     return tmp.textContent || tmp.innerText || "";
   }
 
@@ -24,7 +22,7 @@ const CardsJourneys = ({ handleShow, journey }) => {
             <p
               className="description m-0"
               dangerouslySetInnerHTML={{
-                __html: removeHTML(sliceDescription) + "...",
+                __html: removeHTML(journey.description) + "...",
               }}
             />
           </div>
