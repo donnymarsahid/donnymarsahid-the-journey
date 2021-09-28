@@ -7,12 +7,15 @@ import CardsJourneys from "./cards/CardsJourneys";
 import Login from "../../assets/components/modals/Login";
 import Register from "../../assets/components/modals/Register";
 import loading from "../../assets/img/loading.gif";
+import ForgetPassword from "../../assets/components/modals/ForgetPassword";
 
 const Guest = () => {
   const [show, setShow] = useState(false);
+  const [showForgetPassword, setShowForgetPassword] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const handleClose = () => setShow(false);
   const handleCloseRegister = () => setShowRegister(false);
+  const handleCloseForgetPassword = () => setShowForgetPassword(false);
 
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState("");
@@ -45,9 +48,14 @@ const Guest = () => {
   const handleShow = () => {
     setShow(true);
     setShowRegister(false);
+    setShowForgetPassword(false);
   };
   const handleShowRegister = () => {
     setShowRegister(true);
+    setShow(false);
+  };
+  const handleShowForgetPassword = () => {
+    setShowForgetPassword(true);
     setShow(false);
   };
 
@@ -117,11 +125,17 @@ const Guest = () => {
         handleShowRegister={handleShowRegister}
         show={show}
         handleClose={handleClose}
+        handleShowForgetPassword={handleShowForgetPassword}
       />
       <Register
         handleShow={handleShow}
         showRegister={showRegister}
         handleCloseRegister={handleCloseRegister}
+      />
+      <ForgetPassword
+        showForgetPassword={showForgetPassword}
+        handleCloseForgetPassword={handleCloseForgetPassword}
+        handleShow={handleShow}
       />
     </>
   );

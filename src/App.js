@@ -14,6 +14,7 @@ import NewJourney from "./pages/user/NewJourney";
 import Bookmark from "./pages/user/Bookmark";
 import Footer from "./assets/components/Footer";
 import UpdateJourney from "./pages/user/UpdateJourney";
+import ResetPassword from "./pages/guest/ResetPassword";
 
 function App() {
   const [state, dispatch] = useContext(UserContext);
@@ -74,6 +75,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Guest} />
         <Route path="/post/:id" component={DetailPost} />
+        <Route path="/reset-password/:id" component={ResetPassword} />
       </Switch>
       <Footer />
     </Router>

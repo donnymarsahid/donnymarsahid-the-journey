@@ -11,8 +11,15 @@ const NavbarPost = ({ handleShow, handleShowRegister }) => {
             <img src={logo} alt="logo-the-journey" className="img-logo" />
           </Link>
           <div className="button-navbar">
-            <button className="btn-login  me-3 active">Login</button>
-            <button className="btn-register active">Register</button>
+            <button className="btn-login  me-3 active" onClick={handleShow}>
+              Login
+            </button>
+            <button
+              className="btn-register active"
+              onClick={handleShowRegister}
+            >
+              Register
+            </button>
           </div>
         </div>
       </nav>

@@ -13,7 +13,7 @@ const Footer = () => {
                 <a href="/">
                   Hub : 0838-7223-9021 <br />
                 </a>
-                <a href="/">Email : waysbucks.coffee@gmail.com</a>
+                <a href="/">Email : thejourney@gmail.com</a>
               </p>
             </div>
             <div className="col-md-4 text-center sosmed">

@@ -198,3 +198,56 @@ nav .button-navbar .btn-register.active:hover {
   width: 24px;
 }
 /* Detail Post End */
+
+/* Reset Password Start */
+.page-reset-password {
+  width: 100%;
+  height: 100vh;
+}
+.page-reset-password label {
+  color: #3d3d3d;
+  font-weight: 600;
+}
+.page-reset-password input {
+  width: 100%;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #d2d2d240;
+  border: 2px solid #2d2d2d73;
+  height: 35px;
+}
+.page-reset-password .box-reset-password {
+  background-color: white;
+  width: 28%;
+  height: 400px;
+  padding: 100px 20px 0 20px;
+  border-radius: 8px;
+  position: relative;
+}
+.page-reset-password button.btn-reset-password {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+  width: 100%;
+  margin-top: 30px;
+}
+.page-reset-password .atlas-reset-pass {
+  width: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 5px;
+}
+.page-reset-password .leaf-reset-pass {
+  width: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 5px;
+}
+/* Reset Password End */

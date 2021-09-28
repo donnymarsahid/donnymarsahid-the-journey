@@ -88,6 +88,15 @@ body {
   background-color: transparent;
   border: none;
 }
+.modal-access .form-question-forget {
+  text-align: center;
+}
+.modal-access .form-question-forget button {
+  color: #bf8eff;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+}
 
 .modal-access.register {
   height: 590px;
