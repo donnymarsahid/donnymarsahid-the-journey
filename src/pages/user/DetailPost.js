@@ -134,8 +134,7 @@ const DetailPost = () => {
 
   return (
     <>
-      {detailPost?.idUser === detailUser?.id ||
-      findBookmark[0]?.idUser !== detailUser?.idUser ? (
+      {detailPost?.idUser === detailUser?.id ? (
         <>
           <Link to={`/update-journey/${detailPost?.id}`}>
             <div className="btn-update-page-detail d-flex align-items-center justify-content-center">
