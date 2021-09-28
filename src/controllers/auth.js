@@ -2,6 +2,8 @@ const { user } = require("../../models");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sendResetLink = require("../sendEmail/sendEmail");
+const { v4: uuidv4 } = require("uuid");
 
 // Register
 exports.register = async (req, res) => {
@@ -149,5 +151,74 @@ exports.checkAuth = async (req, res) => {
       status: "failed",
       message: "Server Error",
     });
+  }
+};
+
+// Forget Password
+exports.forgetPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const thisUser = await user.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (thisUser) {
+      const id = uuidv4();
+      await user.update(
+        { resetLink: id },
+        {
+          where: {
+            email,
+          },
+        }
+      );
+      const link = `To reset your password, please click on this link: http://localhost:3000/reset-password/${id}`;
+      await sendResetLink(thisUser.email, "Reset Password Instructions", link);
+    } else {
+      res.status(500).send({
+        status: "failed",
+        message: "email is not registered",
+      });
+    }
+
+    res.status(200).send({
+      status: "success",
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "failed",
+    });
+    console.log(error);
+  }
+};
+
+// reset password
+exports.resetPassword = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    const saltRounds = await bcrypt.genSalt(10);
+    const hashingPassword = await bcrypt.hash(password, saltRounds);
+
+    await user.update(
+      { password: hashingPassword },
+      {
+        where: {
+          resetLink: id,
+        },
+      }
+    );
+
+    res.status(200).send({
+      status: "success",
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "failed",
+    });
+    console.log(error);
   }
 };

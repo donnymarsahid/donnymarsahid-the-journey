@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const { login, register, checkAuth } = require("../controllers/auth");
+const {
+  login,
+  register,
+  checkAuth,
+  forgetPassword,
+  resetPassword,
+} = require("../controllers/auth");
 const {
   getBookmarksUser,
   addBookmark,
@@ -27,6 +33,8 @@ const {
 router.post("/login", login);
 router.post("/register", register);
 router.get("/check-auth", authToken, checkAuth);
+router.post("/forget-password", forgetPassword);
+router.put("/reset-password/:id", resetPassword);
 
 // Journey
 router.get("/journeys", getJourneys);

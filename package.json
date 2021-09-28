@@ -12,6 +12,7 @@
   "author": "donnymarsahid",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.996.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.3",
     "mysql2": "^2.3.0",
+    "nodemailer": "^6.6.5",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
     "uuid": "^8.3.2"

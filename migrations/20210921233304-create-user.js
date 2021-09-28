@@ -26,6 +26,9 @@ module.exports = {
       image: {
         type: Sequelize.STRING,
       },
+      resetLink: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
